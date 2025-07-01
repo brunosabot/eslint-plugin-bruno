@@ -160,7 +160,9 @@ describe("Given the test-given-when-then rule", () => {
       const invalidCode = `
         describe("Given a condition", () => {
           describe("When an action occurs", () => {
-            describe("And an invalid nested block", () => {});
+            describe("And an invalid nested block", () => {
+              it("Then something happens", () => {});
+            });
           });
         });
       `;
@@ -176,6 +178,7 @@ describe("Given the test-given-when-then rule", () => {
                 message:
                   'A "describe" block cannot be nested inside a block that is not a "Given" block.',
               },
+              { message: '"it" block must be inside a "When" describe block.' },
             ],
           },
         ],
