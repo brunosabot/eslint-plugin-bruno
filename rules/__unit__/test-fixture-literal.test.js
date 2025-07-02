@@ -19,7 +19,6 @@ describe("Given a test-fixture-literal rule", () => {
         filename: "test.fixture.ts",
       };
 
-      // Act
       // Assert
       ruleTester.run("test-fixture-literal", rule, {
         invalid: [],
@@ -34,7 +33,6 @@ describe("Given a test-fixture-literal rule", () => {
         filename: "test.fixture.ts",
       };
 
-      // Act
       // Assert
       ruleTester.run("test-fixture-literal", rule, {
         invalid: [],
@@ -49,7 +47,6 @@ describe("Given a test-fixture-literal rule", () => {
         filename: "test.fixture.ts",
       };
 
-      // Act
       // Assert
       ruleTester.run("test-fixture-literal", rule, {
         invalid: [],
@@ -64,7 +61,6 @@ describe("Given a test-fixture-literal rule", () => {
         filename: "test.fixture.ts",
       };
 
-      // Act
       // Assert
       ruleTester.run("test-fixture-literal", rule, {
         invalid: [],
@@ -79,7 +75,6 @@ describe("Given a test-fixture-literal rule", () => {
         filename: "test.fixture.ts",
       };
 
-      // Act
       // Assert
       ruleTester.run("test-fixture-literal", rule, {
         invalid: [],
@@ -102,7 +97,6 @@ describe("Given a test-fixture-literal rule", () => {
         filename: "test.fixture.ts",
       };
 
-      // Act
       // Assert
       ruleTester.run("test-fixture-literal", rule, {
         invalid: [testCase],
@@ -123,7 +117,6 @@ describe("Given a test-fixture-literal rule", () => {
         filename: "test.fixture.ts",
       };
 
-      // Act
       // Assert
       ruleTester.run("test-fixture-literal", rule, {
         invalid: [testCase],
@@ -144,7 +137,6 @@ describe("Given a test-fixture-literal rule", () => {
         filename: "test.fixture.ts",
       };
 
-      // Act
       // Assert
       ruleTester.run("test-fixture-literal", rule, {
         invalid: [testCase],
@@ -165,7 +157,6 @@ describe("Given a test-fixture-literal rule", () => {
         filename: "test.fixture.ts",
       };
 
-      // Act
       // Assert
       ruleTester.run("test-fixture-literal", rule, {
         invalid: [testCase],
@@ -186,7 +177,6 @@ describe("Given a test-fixture-literal rule", () => {
         filename: "test.fixture.ts",
       };
 
-      // Act
       // Assert
       ruleTester.run("test-fixture-literal", rule, {
         invalid: [testCase],
@@ -206,7 +196,6 @@ describe("Given a test-fixture-literal rule", () => {
         filename: "test.fixture.ts",
       };
 
-      // Act
       // Assert
       ruleTester.run("test-fixture-literal", rule, {
         invalid: [testCase],
@@ -224,7 +213,6 @@ describe("Given a test-fixture-literal rule", () => {
         filename: "test.fixture.ts",
       };
 
-      // Act
       // Assert
       ruleTester.run("test-fixture-literal", rule, {
         invalid: [testCase],
@@ -242,7 +230,6 @@ describe("Given a test-fixture-literal rule", () => {
         filename: "test.fixture.ts",
       };
 
-      // Act
       // Assert
       ruleTester.run("test-fixture-literal", rule, {
         invalid: [testCase],
@@ -263,7 +250,6 @@ describe("Given a test-fixture-literal rule", () => {
         filename: "test.fixture.ts",
       };
 
-      // Act
       // Assert
       ruleTester.run("test-fixture-literal", rule, {
         invalid: [testCase],
@@ -284,7 +270,6 @@ describe("Given a test-fixture-literal rule", () => {
         filename: "test.fixture.ts",
       };
 
-      // Act
       // Assert
       ruleTester.run("test-fixture-literal", rule, {
         invalid: [testCase],
@@ -305,7 +290,6 @@ describe("Given a test-fixture-literal rule", () => {
         filename: "test.fixture.ts",
       };
 
-      // Act
       // Assert
       ruleTester.run("test-fixture-literal", rule, {
         invalid: [testCase],
@@ -319,7 +303,6 @@ describe("Given a test-fixture-literal rule", () => {
       // Arrange
       const validCode = `const a = 1; export default a;`;
 
-      // Act
       // Assert
       ruleTester.run("test-fixture-literal", rule, {
         invalid: [],

@@ -10,25 +10,45 @@ export default {
         const sourceCode = context.getSourceCode();
         const comments = sourceCode.getCommentsInside(node);
 
-        const hasArrange = comments.some(
+        const arrangeComment = comments.find(
           (comment) => comment.value.trim() === "Arrange"
         );
-        const hasAssert = comments.some(
+        const actComment = comments.find(
+          (comment) => comment.value.trim() === "Act"
+        );
+        const assertComment = comments.find(
           (comment) => comment.value.trim() === "Assert"
         );
 
-        if (hasArrange === false) {
+        if (arrangeComment === undefined) {
           context.report({
-            message: 'The "' + calleeName + '" block must contain an "// Arrange" comment.',
+            message: `The "${calleeName}" block must contain an "// Arrange" comment.`,
             node,
           });
         }
 
-        if (hasAssert === false) {
+        if (assertComment === undefined) {
           context.report({
-            message: 'The "' + calleeName + '" block must contain an "// Assert" comment.',
+            message: `The "${calleeName}" block must contain an "// Assert" comment.`,
             node,
           });
+        }
+
+        if (
+          actComment !== undefined &&
+          assertComment !== undefined &&
+          actComment.range[1] < assertComment.range[0]
+        ) {
+          const textBetween = sourceCode
+            .getText()
+            .slice(actComment.range[1], assertComment.range[0]);
+
+          if (textBetween.trim() === "") {
+            context.report({
+              message: 'The "// Act" comment is empty and should be removed.',
+              node: actComment,
+            });
+          }
         }
       },
     };

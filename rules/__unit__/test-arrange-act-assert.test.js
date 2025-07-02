@@ -31,6 +31,7 @@ describe("Given the test-arrange-act-assert rule", () => {
         it(\"Then it should do something\", () => {
           // Arrange
           // Act
+          const x = 1;
           // Assert
         });
       `;
@@ -66,6 +67,7 @@ describe("Given the test-arrange-act-assert rule", () => {
         test(\"Then it should do something\", () => {
           // Arrange
           // Act
+          const x = 1;
           // Assert
         });
       `;
@@ -194,7 +196,8 @@ describe("Given the test-arrange-act-assert rule", () => {
             code: invalidCode,
             errors: [
               {
-                message: 'The "test" block must contain an "// Arrange" comment.',
+                message:
+                  'The "test" block must contain an "// Arrange" comment.',
               },
             ],
           },
@@ -218,7 +221,8 @@ describe("Given the test-arrange-act-assert rule", () => {
             code: invalidCode,
             errors: [
               {
-                message: 'The "test" block must contain an "// Assert" comment.',
+                message:
+                  'The "test" block must contain an "// Assert" comment.',
               },
             ],
           },
@@ -242,10 +246,12 @@ describe("Given the test-arrange-act-assert rule", () => {
             code: invalidCode,
             errors: [
               {
-                message: 'The "test" block must contain an "// Arrange" comment.',
+                message:
+                  'The "test" block must contain an "// Arrange" comment.',
               },
               {
-                message: 'The "test" block must contain an "// Assert" comment.',
+                message:
+                  'The "test" block must contain an "// Assert" comment.',
               },
             ],
           },
@@ -267,10 +273,38 @@ describe("Given the test-arrange-act-assert rule", () => {
             code: invalidCode,
             errors: [
               {
-                message: 'The "test" block must contain an "// Arrange" comment.',
+                message:
+                  'The "test" block must contain an "// Arrange" comment.',
               },
               {
-                message: 'The "test" block must contain an "// Assert" comment.',
+                message:
+                  'The "test" block must contain an "// Assert" comment.',
+              },
+            ],
+          },
+        ],
+        valid: [],
+      });
+    });
+
+    it("Then it should fail for a test with an empty Act block", () => {
+      // Arrange
+      const invalidCode = `
+        it(\"Then it should do something\", () => {
+          // Arrange
+          // Act
+          // Assert
+        });
+      `;
+
+      // Assert
+      ruleTester.run("test-arrange-act-assert", rule, {
+        invalid: [
+          {
+            code: invalidCode,
+            errors: [
+              {
+                message: 'The "// Act" comment is empty and should be removed.',
               },
             ],
           },
