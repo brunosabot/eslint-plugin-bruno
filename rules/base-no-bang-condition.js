@@ -1,20 +1,10 @@
 export default {
-  meta: {
-    type: "suggestion",
-    docs: {
-      description: "disallow use of bang in if statement",
-      category: "Best Practices",
-      recommended: true,
-    },
-    fixable: "code",
-    schema: [], // no options
-  },
   create: function (context) {
     function checkForBang(node) {
       if (node.type === "UnaryExpression" && node.operator === "!") {
         context.report({
-          node: node,
           message: "Using ! in if statements is not allowed.",
+          node: node,
         });
       } else if (node.type === "LogicalExpression") {
         checkForBang(node.left);
@@ -27,5 +17,15 @@ export default {
         checkForBang(ifNode.test);
       },
     };
+  },
+  meta: {
+    docs: {
+      category: "Best Practices",
+      description: "disallow use of bang in if statement",
+      recommended: true,
+    },
+    fixable: "code",
+    schema: [], // no options
+    type: "suggestion",
   },
 };

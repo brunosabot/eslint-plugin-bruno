@@ -1,13 +1,4 @@
 export default {
-  meta: {
-    type: "suggestion",
-    docs: {
-      description: "enforce Given/When/Then structure in test files",
-      category: "Best Practices",
-      recommended: true,
-    },
-    schema: [],
-  },
   create: function (context) {
     const describeStack = [];
 
@@ -35,8 +26,9 @@ export default {
           if (describeStack.length === 0) {
             if (getDescribeTitle(node).startsWith("Given") === false) {
               context.report({
+                message:
+                  'Top-level describe block title must start with "Given".',
                 node,
-                message: 'Top-level describe block title must start with "Given".',
               });
             }
           } else {
@@ -44,37 +36,45 @@ export default {
             if (parentDescribe.title.startsWith("Given")) {
               if (getDescribeTitle(node).startsWith("When") === false) {
                 context.report({
+                  message:
+                    'A describe block nested under "Given" must start with "When".',
                   node,
-                  message: 'A describe block nested under "Given" must start with "When".',
                 });
               }
             } else {
               context.report({
+                message:
+                  'A "describe" block cannot be nested inside a block that is not a "Given" block.',
                 node,
-                message: 'A "describe" block cannot be nested inside a block that is not a "Given" block.',
               });
             }
           }
-          describeStack.push({ title: getDescribeTitle(node), node });
+          describeStack.push({ node, title: getDescribeTitle(node) });
         }
 
         if (isTest) {
-          const message = '"' + calleeName + '" block must be inside a "When" describe block.';
+          const message =
+            '"' +
+            calleeName +
+            '" block must be inside a "When" describe block.';
           if (describeStack.length === 0) {
-            context.report({ node, message });
+            context.report({ message, node });
             return;
           }
 
           const parentDescribe = describeStack[describeStack.length - 1];
           if (parentDescribe.title.startsWith("When") === false) {
-            context.report({ node, message });
+            context.report({ message, node });
             return;
           }
-          
+
           if (getItTitle(node).startsWith("Then") === false) {
             context.report({
+              message:
+                'An "' +
+                calleeName +
+                '" block nested under "When" must start with "Then".',
               node,
-              message: 'An "' + calleeName + '" block nested under "When" must start with "Then".',
             });
           }
         }
@@ -85,5 +85,14 @@ export default {
         }
       },
     };
+  },
+  meta: {
+    docs: {
+      category: "Best Practices",
+      description: "enforce Given/When/Then structure in test files",
+      recommended: true,
+    },
+    schema: [],
+    type: "suggestion",
   },
 };

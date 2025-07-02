@@ -1,5 +1,6 @@
 import { RuleTester } from "eslint";
 import { describe, it } from "vitest";
+
 import rule from "../test-given-when-then.js";
 
 const ruleTester = new RuleTester({
@@ -20,8 +21,8 @@ describe("Given the test-given-when-then rule", () => {
 
       // Assert
       ruleTester.run("test-given-when-then", rule, {
-        valid: [validCode],
         invalid: [],
+        valid: [validCode],
       });
     });
 
@@ -37,8 +38,8 @@ describe("Given the test-given-when-then rule", () => {
 
       // Assert
       ruleTester.run("test-given-when-then", rule, {
-        valid: [validCode],
         invalid: [],
+        valid: [validCode],
       });
     });
   });
@@ -50,7 +51,6 @@ describe("Given the test-given-when-then rule", () => {
 
       // Assert
       ruleTester.run("test-given-when-then", rule, {
-        valid: [],
         invalid: [
           {
             code: invalidCode,
@@ -62,6 +62,7 @@ describe("Given the test-given-when-then rule", () => {
             ],
           },
         ],
+        valid: [],
       });
     });
 
@@ -75,7 +76,6 @@ describe("Given the test-given-when-then rule", () => {
 
       // Assert
       ruleTester.run("test-given-when-then", rule, {
-        valid: [],
         invalid: [
           {
             code: invalidCode,
@@ -87,6 +87,7 @@ describe("Given the test-given-when-then rule", () => {
             ],
           },
         ],
+        valid: [],
       });
     });
 
@@ -102,7 +103,6 @@ describe("Given the test-given-when-then rule", () => {
 
       // Assert
       ruleTester.run("test-given-when-then", rule, {
-        valid: [],
         invalid: [
           {
             code: invalidCode,
@@ -114,6 +114,7 @@ describe("Given the test-given-when-then rule", () => {
             ],
           },
         ],
+        valid: [],
       });
     });
 
@@ -129,7 +130,6 @@ describe("Given the test-given-when-then rule", () => {
 
       // Assert
       ruleTester.run("test-given-when-then", rule, {
-        valid: [],
         invalid: [
           {
             code: invalidCode,
@@ -141,6 +141,7 @@ describe("Given the test-given-when-then rule", () => {
             ],
           },
         ],
+        valid: [],
       });
     });
 
@@ -154,7 +155,6 @@ describe("Given the test-given-when-then rule", () => {
 
       // Assert
       ruleTester.run("test-given-when-then", rule, {
-        valid: [],
         invalid: [
           {
             code: invalidCode,
@@ -163,6 +163,7 @@ describe("Given the test-given-when-then rule", () => {
             ],
           },
         ],
+        valid: [],
       });
     });
 
@@ -176,7 +177,6 @@ describe("Given the test-given-when-then rule", () => {
 
       // Assert
       ruleTester.run("test-given-when-then", rule, {
-        valid: [],
         invalid: [
           {
             code: invalidCode,
@@ -185,6 +185,7 @@ describe("Given the test-given-when-then rule", () => {
             ],
           },
         ],
+        valid: [],
       });
     });
 
@@ -202,7 +203,6 @@ describe("Given the test-given-when-then rule", () => {
 
       // Assert
       ruleTester.run("test-given-when-then", rule, {
-        valid: [],
         invalid: [
           {
             code: invalidCode,
@@ -218,6 +218,7 @@ describe("Given the test-given-when-then rule", () => {
             ],
           },
         ],
+        valid: [],
       });
     });
 
@@ -235,7 +236,6 @@ describe("Given the test-given-when-then rule", () => {
 
       // Assert
       ruleTester.run("test-given-when-then", rule, {
-        valid: [],
         invalid: [
           {
             code: invalidCode,
@@ -248,6 +248,7 @@ describe("Given the test-given-when-then rule", () => {
             ],
           },
         ],
+        valid: [],
       });
     });
   });

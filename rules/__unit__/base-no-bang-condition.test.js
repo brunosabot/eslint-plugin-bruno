@@ -1,7 +1,6 @@
-"use strict";
-
 import { RuleTester } from "eslint";
 import { describe, it } from "vitest";
+
 import rule from "../base-no-bang-condition.js";
 
 const ruleTester = new RuleTester({
@@ -16,8 +15,8 @@ describe("Given the base-no-bang-condition rule", () => {
 
       // Assert
       ruleTester.run("base-no-bang-condition", rule, {
-        valid: [validCode],
         invalid: [],
+        valid: [validCode],
       });
     });
 
@@ -27,8 +26,8 @@ describe("Given the base-no-bang-condition rule", () => {
 
       // Assert
       ruleTester.run("base-no-bang-condition", rule, {
-        valid: [validCode],
         invalid: [],
+        valid: [validCode],
       });
     });
 
@@ -38,8 +37,8 @@ describe("Given the base-no-bang-condition rule", () => {
 
       // Assert
       ruleTester.run("base-no-bang-condition", rule, {
-        valid: [validCode],
         invalid: [],
+        valid: [validCode],
       });
     });
 
@@ -49,8 +48,8 @@ describe("Given the base-no-bang-condition rule", () => {
 
       // Assert
       ruleTester.run("base-no-bang-condition", rule, {
-        valid: [validCode],
         invalid: [],
+        valid: [validCode],
       });
     });
   });
@@ -65,8 +64,8 @@ describe("Given the base-no-bang-condition rule", () => {
 
       // Assert
       ruleTester.run("base-no-bang-condition", rule, {
-        valid: [],
         invalid: [{ code: invalidCode, errors: expectedErrors }],
+        valid: [],
       });
     });
 
@@ -79,8 +78,8 @@ describe("Given the base-no-bang-condition rule", () => {
 
       // Assert
       ruleTester.run("base-no-bang-condition", rule, {
-        valid: [],
         invalid: [{ code: invalidCode, errors: expectedErrors }],
+        valid: [],
       });
     });
 
@@ -93,8 +92,8 @@ describe("Given the base-no-bang-condition rule", () => {
 
       // Assert
       ruleTester.run("base-no-bang-condition", rule, {
-        valid: [],
         invalid: [{ code: invalidCode, errors: expectedErrors }],
+        valid: [],
       });
     });
 
@@ -107,8 +106,8 @@ describe("Given the base-no-bang-condition rule", () => {
 
       // Assert
       ruleTester.run("base-no-bang-condition", rule, {
-        valid: [],
         invalid: [{ code: invalidCode, errors: expectedErrors }],
+        valid: [],
       });
     });
   });

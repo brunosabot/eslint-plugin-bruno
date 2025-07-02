@@ -1,13 +1,4 @@
 export default {
-  meta: {
-    type: "suggestion",
-    docs: {
-      description: "enforce Arrange/Act/Assert pattern in test files",
-      category: "Best Practices",
-      recommended: true,
-    },
-    schema: [],
-  },
   create: function (context) {
     return {
       CallExpression(node) {
@@ -28,18 +19,27 @@ export default {
 
         if (hasArrange === false) {
           context.report({
-            node,
             message: 'The "' + calleeName + '" block must contain an "// Arrange" comment.',
+            node,
           });
         }
 
         if (hasAssert === false) {
           context.report({
-            node,
             message: 'The "' + calleeName + '" block must contain an "// Assert" comment.',
+            node,
           });
         }
       },
     };
+  },
+  meta: {
+    docs: {
+      category: "Best Practices",
+      description: "enforce Arrange/Act/Assert pattern in test files",
+      recommended: true,
+    },
+    schema: [],
+    type: "suggestion",
   },
 };

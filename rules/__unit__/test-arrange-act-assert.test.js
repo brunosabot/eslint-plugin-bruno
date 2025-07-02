@@ -1,5 +1,6 @@
 import { RuleTester } from "eslint";
 import { describe, it } from "vitest";
+
 import rule from "../test-arrange-act-assert.js";
 
 const ruleTester = new RuleTester({
@@ -19,8 +20,8 @@ describe("Given the test-arrange-act-assert rule", () => {
 
       // Assert
       ruleTester.run("test-arrange-act-assert", rule, {
-        valid: [validCode],
         invalid: [],
+        valid: [validCode],
       });
     });
 
@@ -36,8 +37,8 @@ describe("Given the test-arrange-act-assert rule", () => {
 
       // Assert
       ruleTester.run("test-arrange-act-assert", rule, {
-        valid: [validCode],
         invalid: [],
+        valid: [validCode],
       });
     });
   });
@@ -54,8 +55,8 @@ describe("Given the test-arrange-act-assert rule", () => {
 
       // Assert
       ruleTester.run("test-arrange-act-assert", rule, {
-        valid: [validCode],
         invalid: [],
+        valid: [validCode],
       });
     });
 
@@ -71,8 +72,8 @@ describe("Given the test-arrange-act-assert rule", () => {
 
       // Assert
       ruleTester.run("test-arrange-act-assert", rule, {
-        valid: [validCode],
         invalid: [],
+        valid: [validCode],
       });
     });
   });
@@ -88,7 +89,6 @@ describe("Given the test-arrange-act-assert rule", () => {
 
       // Assert
       ruleTester.run("test-arrange-act-assert", rule, {
-        valid: [],
         invalid: [
           {
             code: invalidCode,
@@ -99,6 +99,7 @@ describe("Given the test-arrange-act-assert rule", () => {
             ],
           },
         ],
+        valid: [],
       });
     });
 
@@ -112,7 +113,6 @@ describe("Given the test-arrange-act-assert rule", () => {
 
       // Assert
       ruleTester.run("test-arrange-act-assert", rule, {
-        valid: [],
         invalid: [
           {
             code: invalidCode,
@@ -123,6 +123,7 @@ describe("Given the test-arrange-act-assert rule", () => {
             ],
           },
         ],
+        valid: [],
       });
     });
 
@@ -136,7 +137,6 @@ describe("Given the test-arrange-act-assert rule", () => {
 
       // Assert
       ruleTester.run("test-arrange-act-assert", rule, {
-        valid: [],
         invalid: [
           {
             code: invalidCode,
@@ -150,6 +150,7 @@ describe("Given the test-arrange-act-assert rule", () => {
             ],
           },
         ],
+        valid: [],
       });
     });
 
@@ -161,7 +162,6 @@ describe("Given the test-arrange-act-assert rule", () => {
 
       // Assert
       ruleTester.run("test-arrange-act-assert", rule, {
-        valid: [],
         invalid: [
           {
             code: invalidCode,
@@ -175,6 +175,7 @@ describe("Given the test-arrange-act-assert rule", () => {
             ],
           },
         ],
+        valid: [],
       });
     });
 
@@ -188,7 +189,6 @@ describe("Given the test-arrange-act-assert rule", () => {
 
       // Assert
       ruleTester.run("test-arrange-act-assert", rule, {
-        valid: [],
         invalid: [
           {
             code: invalidCode,
@@ -199,6 +199,7 @@ describe("Given the test-arrange-act-assert rule", () => {
             ],
           },
         ],
+        valid: [],
       });
     });
 
@@ -212,7 +213,6 @@ describe("Given the test-arrange-act-assert rule", () => {
 
       // Assert
       ruleTester.run("test-arrange-act-assert", rule, {
-        valid: [],
         invalid: [
           {
             code: invalidCode,
@@ -223,6 +223,7 @@ describe("Given the test-arrange-act-assert rule", () => {
             ],
           },
         ],
+        valid: [],
       });
     });
 
@@ -236,7 +237,6 @@ describe("Given the test-arrange-act-assert rule", () => {
 
       // Assert
       ruleTester.run("test-arrange-act-assert", rule, {
-        valid: [],
         invalid: [
           {
             code: invalidCode,
@@ -250,6 +250,7 @@ describe("Given the test-arrange-act-assert rule", () => {
             ],
           },
         ],
+        valid: [],
       });
     });
 
@@ -261,7 +262,6 @@ describe("Given the test-arrange-act-assert rule", () => {
 
       // Assert
       ruleTester.run("test-arrange-act-assert", rule, {
-        valid: [],
         invalid: [
           {
             code: invalidCode,
@@ -275,6 +275,7 @@ describe("Given the test-arrange-act-assert rule", () => {
             ],
           },
         ],
+        valid: [],
       });
     });
   });
