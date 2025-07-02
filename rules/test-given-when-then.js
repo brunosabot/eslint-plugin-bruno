@@ -27,16 +27,16 @@ export default {
 
     return {
       CallExpression(node) {
-        const isDescribe = node.callee.name === "describe";
-        const isIt = node.callee.name === "it";
+        const calleeName = node.callee.name;
+        const isDescribe = calleeName === "describe";
+        const isTest = calleeName === "it" || calleeName === "test";
 
         if (isDescribe) {
           if (describeStack.length === 0) {
             if (getDescribeTitle(node).startsWith("Given") === false) {
               context.report({
                 node,
-                message:
-                  'Top-level describe block title must start with "Given".',
+                message: 'Top-level describe block title must start with "Given".',
               });
             }
           } else {
@@ -45,44 +45,36 @@ export default {
               if (getDescribeTitle(node).startsWith("When") === false) {
                 context.report({
                   node,
-                  message:
-                    'A describe block nested under "Given" must start with "When".',
+                  message: 'A describe block nested under "Given" must start with "When".',
                 });
               }
             } else {
               context.report({
                 node,
-                message:
-                  'A "describe" block cannot be nested inside a block that is not a "Given" block.',
+                message: 'A "describe" block cannot be nested inside a block that is not a "Given" block.',
               });
             }
           }
           describeStack.push({ title: getDescribeTitle(node), node });
         }
 
-        if (isIt) {
+        if (isTest) {
+          const message = '"' + calleeName + '" block must be inside a "When" describe block.';
           if (describeStack.length === 0) {
-            context.report({
-              node,
-              message: '"it" block must be inside a "When" describe block.',
-            });
+            context.report({ node, message });
             return;
           }
 
           const parentDescribe = describeStack[describeStack.length - 1];
           if (parentDescribe.title.startsWith("When") === false) {
-            context.report({
-              node,
-              message: '"it" block must be inside a "When" describe block.',
-            });
+            context.report({ node, message });
             return;
           }
-
+          
           if (getItTitle(node).startsWith("Then") === false) {
             context.report({
               node,
-              message:
-                'An "it" block nested under "When" must start with "Then".',
+              message: 'An "' + calleeName + '" block nested under "When" must start with "Then".',
             });
           }
         }

@@ -8,12 +8,29 @@ const ruleTester = new RuleTester({
 
 describe("Given the test-given-when-then rule", () => {
   describe("When the code follows the Given/When/Then structure", () => {
-    it("Then it should pass for a correctly structured test", () => {
+    it("Then it should pass for a correctly structured test using 'it'", () => {
       // Arrange
       const validCode = `
         describe("Given a certain condition", () => {
           describe("When an action occurs", () => {
             it("Then it should have a specific outcome", () => {});
+          });
+        });
+      `;
+
+      // Assert
+      ruleTester.run("test-given-when-then", rule, {
+        valid: [validCode],
+        invalid: [],
+      });
+    });
+
+    it("Then it should pass for a correctly structured test using 'test'", () => {
+      // Arrange
+      const validCode = `
+        describe("Given a certain condition", () => {
+          describe("When an action occurs", () => {
+            test("Then it should have a specific outcome", () => {});
           });
         });
       `;
@@ -100,6 +117,33 @@ describe("Given the test-given-when-then rule", () => {
       });
     });
 
+    it("Then it should fail for a 'test' block not starting with 'Then'", () => {
+      // Arrange
+      const invalidCode = `
+        describe("Given a condition", () => {
+          describe("When an action occurs", () => {
+            test("should do something", () => {});
+          });
+        });
+      `;
+
+      // Assert
+      ruleTester.run("test-given-when-then", rule, {
+        valid: [],
+        invalid: [
+          {
+            code: invalidCode,
+            errors: [
+              {
+                message:
+                  'An "test" block nested under "When" must start with "Then".',
+              },
+            ],
+          },
+        ],
+      });
+    });
+
     it("Then it should fail for an 'it' block inside a 'Given' but not a 'When'", () => {
       // Arrange
       const invalidCode = `
@@ -116,6 +160,28 @@ describe("Given the test-given-when-then rule", () => {
             code: invalidCode,
             errors: [
               { message: '"it" block must be inside a "When" describe block.' },
+            ],
+          },
+        ],
+      });
+    });
+
+    it("Then it should fail for a 'test' block inside a 'Given' but not a 'When'", () => {
+      // Arrange
+      const invalidCode = `
+        describe("Given a condition", () => {
+          test("Then something happens", () => {});
+        });
+      `;
+
+      // Assert
+      ruleTester.run("test-given-when-then", rule, {
+        valid: [],
+        invalid: [
+          {
+            code: invalidCode,
+            errors: [
+              { message: '"test" block must be inside a "When" describe block.' },
             ],
           },
         ],

@@ -11,7 +11,8 @@ export default {
   create: function (context) {
     return {
       CallExpression(node) {
-        if (node.callee.name !== "it") {
+        const calleeName = node.callee.name;
+        if (calleeName !== "it" && calleeName !== "test") {
           return;
         }
 
@@ -28,14 +29,14 @@ export default {
         if (hasArrange === false) {
           context.report({
             node,
-            message: 'The "it" block must contain an "// Arrange" comment.',
+            message: 'The "' + calleeName + '" block must contain an "// Arrange" comment.',
           });
         }
 
         if (hasAssert === false) {
           context.report({
             node,
-            message: 'The "it" block must contain an "// Assert" comment.',
+            message: 'The "' + calleeName + '" block must contain an "// Assert" comment.',
           });
         }
       },
