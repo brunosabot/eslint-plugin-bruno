@@ -1,5 +1,6 @@
 import baseNoBangCondition from "./base-no-bang-condition.js";
 import testArrangeActAssert from "./test-arrange-act-assert.js";
+import testFixtureFile from "./test-fixture-file.js";
 import testFixtureLiteral from "./test-fixture-literal.js";
 import testGivenWhenThen from "./test-given-when-then.js";
 
@@ -10,6 +11,7 @@ export default {
       rules: {
         "bruno/base-no-bang-condition": "error",
         "bruno/test-arrange-act-assert": "error",
+        "bruno/test-fixture-file": "error",
         "bruno/test-fixture-literal": "error",
         "bruno/test-given-when-then": "error",
       },
@@ -23,6 +25,7 @@ export default {
   rules: {
     "base-no-bang-condition": baseNoBangCondition,
     "test-arrange-act-assert": testArrangeActAssert,
+    "test-fixture-file": testFixtureFile,
     "test-fixture-literal": testFixtureLiteral,
     "test-given-when-then": testGivenWhenThen,
   },
