@@ -20,16 +20,29 @@ describe("Given the plugin index", () => {
       });
     });
 
-    it("Then it should have a recommended config for each rule file", () => {
+    it("Then it should have a config for each rule file", () => {
       // Arrange
       const ruleNames = ruleFiles.map((file) => path.basename(file, ".js"));
+      const allConfigRules = Object.values(plugin.configs).reduce(
+        (acc, config) => ({ ...acc, ...config.rules }),
+        {}
+      );
 
       // Assert
       ruleNames.forEach((ruleName) => {
-        expect(plugin.configs.recommended.rules[`bruno/${ruleName}`]).toBe(
-          "error"
-        );
+        expect(allConfigRules[`bruno/${ruleName}`]).toBe("error");
       });
+    });
+
+    it("Then it should not have next-prefixed rules in the recommended config", () => {
+      // Arrange
+      const recommendedRules = Object.keys(plugin.configs.recommended.rules);
+      const nextPrefixedRules = recommendedRules.filter((rule) =>
+        rule.startsWith("bruno/next-")
+      );
+
+      // Assert
+      expect(nextPrefixedRules).toEqual([]);
     });
 
     it("Then it should have a documentation for each rule file", () => {

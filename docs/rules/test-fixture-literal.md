@@ -11,14 +11,14 @@ This rule ensures that `.fixture.ts` files only contain literal values (strings,
 ```typescript
 // user.fixture.ts
 const name = 'John';
-export default { name };
+export const userFixture = { name };
 ```
 
 ### Correct
 
 ```typescript
 // user.fixture.ts
-export default {
+export const userFixture = {
   name: 'John',
 };
 ```
