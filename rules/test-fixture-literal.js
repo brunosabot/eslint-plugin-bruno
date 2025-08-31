@@ -22,6 +22,14 @@ export default {
         return;
       }
 
+      if (node.type === "MemberExpression") {
+        return;
+      }
+
+      if (node.type === "NewExpression" && node.callee.name === "Date") {
+        return;
+      }
+
       if (node.type === "ObjectExpression") {
         for (const prop of node.properties) {
           if (prop.type === "SpreadElement") {
@@ -85,9 +93,9 @@ export default {
                 }
               }
             }
-          } else {
+          } else if (statement.type !== "ImportDeclaration") {
             context.report({
-              message: "Fixture files should only contain named exports.",
+              message: "Fixture files should only contain named exports and imports.",
               node: statement,
             });
           }

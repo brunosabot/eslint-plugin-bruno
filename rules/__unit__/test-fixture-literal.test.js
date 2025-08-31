@@ -99,6 +99,48 @@ describe("Given a test-fixture-literal rule", () => {
         valid: [testCase],
       });
     });
+
+    it("Then it should pass for a file with imports", () => {
+      // Arrange
+      const testCase = {
+        code: `import { a } from 'b';\nexport const myFixture = { a: 1 };`,
+        filename: "test.fixture.ts",
+      };
+
+      // Assert
+      ruleTester.run("test-fixture-literal", rule, {
+        invalid: [],
+        valid: [testCase],
+      });
+    });
+
+    it("Then it should pass for a member expression (enum)", () => {
+      // Arrange
+      const testCase = {
+        code: `export const myFixture = { category: BadgeCategory.BRONZE };`,
+        filename: "test.fixture.ts",
+      };
+
+      // Assert
+      ruleTester.run("test-fixture-literal", rule, {
+        invalid: [],
+        valid: [testCase],
+      });
+    });
+
+    it("Then it should pass for a new Date() expression", () => {
+      // Arrange
+      const testCase = {
+        code: `export const myFixture = { date: new Date() };`,
+        filename: "test.fixture.ts",
+      };
+
+      // Assert
+      ruleTester.run("test-fixture-literal", rule, {
+        invalid: [],
+        valid: [testCase],
+      });
+    });
   });
 
   describe("When the file is a fixture and the content is invalid", () => {
@@ -278,7 +320,7 @@ describe("Given a test-fixture-literal rule", () => {
         code: `const a = 1;`,
         errors: [
           {
-            message: "Fixture files should only contain named exports.",
+            message: "Fixture files should only contain named exports and imports.",
           },
         ],
         filename: "test.fixture.ts",
@@ -297,7 +339,7 @@ describe("Given a test-fixture-literal rule", () => {
         code: `function foo() {}`,
         errors: [
           {
-            message: "Fixture files should only contain named exports.",
+            message: "Fixture files should only contain named exports and imports.",
           },
         ],
         filename: "test.fixture.ts",
