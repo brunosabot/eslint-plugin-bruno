@@ -71,26 +71,27 @@ export default {
           return;
         }
 
-        if (programNode.body.length > 1) {
-          context.report({
-            message:
-              "Fixture files should only contain a single export default statement.",
-            node: programNode.body[1],
-          });
-          return;
+        for (const statement of programNode.body) {
+          if (statement.type === "ExportDefaultDeclaration") {
+            context.report({
+              message: "Fixture files should not contain any default export.",
+              node: statement,
+            });
+          } else if (statement.type === "ExportNamedDeclaration") {
+            if (statement.declaration?.type === "VariableDeclaration") {
+              for (const declaration of statement.declaration.declarations) {
+                if (declaration.init) {
+                  checkIsLiteral(declaration.init);
+                }
+              }
+            }
+          } else {
+            context.report({
+              message: "Fixture files should only contain named exports.",
+              node: statement,
+            });
+          }
         }
-
-        const statement = programNode.body[0];
-        if (statement.type !== "ExportDefaultDeclaration") {
-          context.report({
-            message:
-              "Fixture files should only contain a single export default statement.",
-            node: statement,
-          });
-          return;
-        }
-
-        checkIsLiteral(statement.declaration);
       },
     };
   },
