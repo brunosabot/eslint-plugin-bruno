@@ -63,6 +63,7 @@ export default {
       category: "Best Practices",
       description: "Enforce naming conventions for fixture variables.",
       recommended: true,
+      url: "https://github.com/brunosabot/eslint-plugin-bruno/blob/main/docs/rules/test-fixture-variable-name.md",
     },
     messages: {
       mustBeCamelCase: "Fixture variable '{{variableName}}' must be in camelCase.",

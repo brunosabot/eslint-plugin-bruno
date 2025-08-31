@@ -8,6 +8,23 @@ const ruleTester = new RuleTester({
 });
 
 describe("Given the test-arrange-act-assert rule", () => {
+  describe("When the block is not a test block", () => {
+    it("Then it should not report any errors", () => {
+      // Arrange
+      const code = `
+        describe("a describe block", () => {
+          // No comments
+        });
+      `;
+
+      // Assert
+      ruleTester.run("test-arrange-act-assert", rule, {
+        invalid: [],
+        valid: [{ code }],
+      });
+    });
+  });
+
   describe("When the code uses 'it' and follows the Arrange/Act/Assert structure", () => {
     it("Then it should pass for a test with Arrange and Assert", () => {
       // Arrange

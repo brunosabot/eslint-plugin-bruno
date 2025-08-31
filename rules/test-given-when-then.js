@@ -3,14 +3,22 @@ export default {
     const describeStack = [];
 
     function getDescribeTitle(node) {
-      if (node.arguments[0] && node.arguments[0].type === "Literal") {
+      if (
+        node.arguments[0] &&
+        node.arguments[0].type === "Literal" &&
+        typeof node.arguments[0].value === "string"
+      ) {
         return node.arguments[0].value;
       }
       return "";
     }
 
     function getItTitle(node) {
-      if (node.arguments[0] && node.arguments[0].type === "Literal") {
+      if (
+        node.arguments[0] &&
+        node.arguments[0].type === "Literal" &&
+        typeof node.arguments[0].value === "string"
+      ) {
         return node.arguments[0].value;
       }
       return "";
@@ -91,6 +99,7 @@ export default {
       category: "Best Practices",
       description: "enforce Given/When/Then structure in test files",
       recommended: true,
+      url: "https://github.com/brunosabot/eslint-plugin-bruno/blob/main/docs/rules/test-given-when-then.md",
     },
     schema: [],
     type: "suggestion",

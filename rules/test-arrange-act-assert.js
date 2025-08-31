@@ -58,6 +58,7 @@ export default {
       category: "Best Practices",
       description: "enforce Arrange/Act/Assert pattern in test files",
       recommended: true,
+      url: "https://github.com/brunosabot/eslint-plugin-bruno/blob/main/docs/rules/test-arrange-act-assert.md",
     },
     schema: [],
     type: "suggestion",

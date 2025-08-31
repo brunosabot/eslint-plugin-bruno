@@ -189,6 +189,70 @@ describe("Given the test-given-when-then rule", () => {
       });
     });
 
+    it("Then it should fail for a top-level 'it' block", () => {
+      // Arrange
+      const invalidCode = `it("is a test", () => {});`;
+
+      // Assert
+      ruleTester.run("test-given-when-then", rule, {
+        invalid: [
+          {
+            code: invalidCode,
+            errors: [{ message: '"it" block must be inside a "When" describe block.' }],
+          },
+        ],
+        valid: [],
+      });
+    });
+
+    it("Then it should fail for a top-level describe with a non-string title", () => {
+      // Arrange
+      const invalidCode = `describe(123, () => {});`;
+
+      // Assert
+      ruleTester.run("test-given-when-then", rule, {
+        invalid: [
+          {
+            code: invalidCode,
+            errors: [
+              {
+                message:
+                  'Top-level describe block title must start with "Given".',
+              },
+            ],
+          },
+        ],
+        valid: [],
+      });
+    });
+
+    it("Then it should fail for an 'it' block with a non-string title", () => {
+      // Arrange
+      const invalidCode = `
+        describe("Given a condition", () => {
+          describe("When an action occurs", () => {
+            it(123, () => {});
+          });
+        });
+      `;
+
+      // Assert
+      ruleTester.run("test-given-when-then", rule, {
+        invalid: [
+          {
+            code: invalidCode,
+            errors: [
+              {
+                message:
+                  'An "it" block nested under "When" must start with "Then".',
+              },
+            ],
+          },
+        ],
+        valid: [],
+      });
+    });
+
     it("Then it should fail for a describe block under 'Given' that is not 'When'", () => {
       // Arrange
       const invalidCode = `

@@ -21,8 +21,9 @@ export default {
   meta: {
     docs: {
       category: "Best Practices",
-      description: "disallow use of bang in if statement",
+      description: "disallow the use of bang operators in conditions",
       recommended: true,
+      url: "https://github.com/brunosabot/eslint-plugin-bruno/blob/main/docs/rules/base-no-bang-condition.md",
     },
     fixable: "code",
     schema: [], // no options

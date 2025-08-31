@@ -48,6 +48,7 @@ export default {
       category: "Best Practices",
       description: "Enforce fixture file location and naming conventions.",
       recommended: true,
+      url: "https://github.com/brunosabot/eslint-plugin-bruno/blob/main/docs/rules/test-fixture-file.md",
     },
     messages: {
       invalidFixtureSuffix:

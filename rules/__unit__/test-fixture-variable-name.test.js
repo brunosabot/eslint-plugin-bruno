@@ -56,6 +56,18 @@ describe("Given the test-fixture-variable-name rule", () => {
         valid: [{ code, filename }],
       });
     });
+
+    it("Then it should ignore non-variable exports", () => {
+      // Arrange
+      const code = "export function MyFunction() {}";
+      const filename = "user.fixture.ts";
+
+      // Assert
+      ruleTester.run("test-fixture-variable-name", rule, {
+        invalid: [],
+        valid: [{ code, filename }],
+      });
+    });
   });
 
   describe("When the file is not a fixture file", () => {
@@ -81,7 +93,11 @@ describe("Given the test-fixture-variable-name rule", () => {
         invalid: [
           {
             code,
-            errors: [{ message: "Fixtures must be named exports, not default exports." }],
+            errors: [
+              {
+                message: "Fixtures must be named exports, not default exports.",
+              },
+            ],
             filename: "user.fixture.ts",
           },
         ],
@@ -93,7 +109,12 @@ describe("Given the test-fixture-variable-name rule", () => {
       // Arrange
       const code = "export const user = {};";
       const filename = "user.fixture.ts";
-      const errors = [{ message: "Fixture variable 'user' must end with the 'Fixture' suffix." }];
+      const errors = [
+        {
+          message:
+            "Fixture variable 'user' must end with the 'Fixture' suffix.",
+        },
+      ];
 
       // Assert
       ruleTester.run("test-fixture-variable-name", rule, {
@@ -106,7 +127,9 @@ describe("Given the test-fixture-variable-name rule", () => {
       // Arrange
       const code = "export const user_Fixture = {};";
       const filename = "user.fixture.ts";
-      const errors = [{ message: "Fixture variable 'user_Fixture' must be in camelCase." }];
+      const errors = [
+        { message: "Fixture variable 'user_Fixture' must be in camelCase." },
+      ];
 
       // Assert
       ruleTester.run("test-fixture-variable-name", rule, {
@@ -119,7 +142,12 @@ describe("Given the test-fixture-variable-name rule", () => {
       // Arrange
       const code = "export const myFixture = {};";
       const filename = "user.fixture.ts";
-      const errors = [{ message: "Fixture variable 'myFixture' must contain the file's base name 'user'." }];
+      const errors = [
+        {
+          message:
+            "Fixture variable 'myFixture' must contain the file's base name 'user'.",
+        },
+      ];
 
       // Assert
       ruleTester.run("test-fixture-variable-name", rule, {
@@ -132,7 +160,12 @@ describe("Given the test-fixture-variable-name rule", () => {
       // Arrange
       const code = "export const userProfile = {};";
       const filename = "user-profile.fixture.ts";
-      const errors = [{ message: "Fixture variable 'userProfile' must end with the 'Fixture' suffix." }];
+      const errors = [
+        {
+          message:
+            "Fixture variable 'userProfile' must end with the 'Fixture' suffix.",
+        },
+      ];
 
       // Assert
       ruleTester.run("test-fixture-variable-name", rule, {

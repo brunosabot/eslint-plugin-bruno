@@ -99,6 +99,7 @@ export default {
       category: "Best Practices",
       description: "Enforce that fixture files only contain literals.",
       recommended: true,
+      url: "https://github.com/brunosabot/eslint-plugin-bruno/blob/main/docs/rules/test-fixture-literal.md",
     },
     schema: [],
     type: "problem",

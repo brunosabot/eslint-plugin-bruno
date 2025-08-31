@@ -81,6 +81,24 @@ describe("Given a test-fixture-literal rule", () => {
         valid: [testCase],
       });
     });
+
+    it("Then it should pass for valid unary expressions", () => {
+      // Arrange
+      const testCasePositive = {
+        code: `export default +1;`,
+        filename: "test.fixture.ts",
+      };
+      const testCaseNegative = {
+        code: `export default -1;`,
+        filename: "test.fixture.ts",
+      };
+
+      // Assert
+      ruleTester.run("test-fixture-literal", rule, {
+        invalid: [],
+        valid: [testCasePositive, testCaseNegative],
+      });
+    });
   });
 
   describe("When the file is a fixture and the content is invalid", () => {
