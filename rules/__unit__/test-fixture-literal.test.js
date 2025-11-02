@@ -131,7 +131,35 @@ describe("Given a test-fixture-literal rule", () => {
     it("Then it should pass for a new Date() expression", () => {
       // Arrange
       const testCase = {
-        code: `export const myFixture = { date: new Date() };`,
+        code: `export const myFixture = { date: new Date(), createdAt: new Date("2025-01-01T12:00:00Z") };`,
+        filename: "test.fixture.ts",
+      };
+
+      // Assert
+      ruleTester.run("test-fixture-literal", rule, {
+        invalid: [],
+        valid: [testCase],
+      });
+    });
+
+    it("Then it should pass for a new Map() expression", () => {
+      // Arrange
+      const testCase = {
+        code: `export const myFixture = { map: new Map([['a', 1], ['b', 2]]) };`,
+        filename: "test.fixture.ts",
+      };
+
+      // Assert
+      ruleTester.run("test-fixture-literal", rule, {
+        invalid: [],
+        valid: [testCase],
+      });
+    });
+
+    it("Then it should pass for a new Set() expression", () => {
+      // Arrange
+      const testCase = {
+        code: `export const myFixture = { set: new Set(['a', 'b']) };`,
         filename: "test.fixture.ts",
       };
 
@@ -264,9 +292,7 @@ describe("Given a test-fixture-literal rule", () => {
       // Arrange
       const testCase = {
         code: `export const myFixture = { ...obj };`,
-        errors: [
-          { message: "Spread syntax is not allowed in fixture files." },
-        ],
+        errors: [{ message: "Spread syntax is not allowed in fixture files." }],
         filename: "test.fixture.ts",
       };
 
@@ -281,9 +307,7 @@ describe("Given a test-fixture-literal rule", () => {
       // Arrange
       const testCase = {
         code: `export const myFixture = [...arr];`,
-        errors: [
-          { message: "Spread syntax is not allowed in fixture files." },
-        ],
+        errors: [{ message: "Spread syntax is not allowed in fixture files." }],
         filename: "test.fixture.ts",
       };
 
@@ -320,7 +344,8 @@ describe("Given a test-fixture-literal rule", () => {
         code: `const a = 1;`,
         errors: [
           {
-            message: "Fixture files should only contain named exports and imports.",
+            message:
+              "Fixture files should only contain named exports and imports.",
           },
         ],
         filename: "test.fixture.ts",
@@ -339,7 +364,8 @@ describe("Given a test-fixture-literal rule", () => {
         code: `function foo() {}`,
         errors: [
           {
-            message: "Fixture files should only contain named exports and imports.",
+            message:
+              "Fixture files should only contain named exports and imports.",
           },
         ],
         filename: "test.fixture.ts",

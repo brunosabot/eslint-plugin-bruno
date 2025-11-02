@@ -26,7 +26,12 @@ export default {
         return;
       }
 
-      if (node.type === "NewExpression" && node.callee.name === "Date") {
+      if (
+        node.type === "NewExpression" &&
+        (node.callee.name === "Date" ||
+          node.callee.name === "Map" ||
+          node.callee.name === "Set")
+      ) {
         return;
       }
 
