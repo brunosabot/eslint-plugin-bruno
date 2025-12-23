@@ -10,6 +10,10 @@ export default {
         return;
       }
 
+      if (node.type === "Identifier" && node.name === "undefined") {
+        return;
+      }
+
       if (node.type === "TemplateLiteral" && node.expressions.length === 0) {
         return;
       }
@@ -100,7 +104,8 @@ export default {
             }
           } else if (statement.type !== "ImportDeclaration") {
             context.report({
-              message: "Fixture files should only contain named exports and imports.",
+              message:
+                "Fixture files should only contain named exports and imports.",
               node: statement,
             });
           }

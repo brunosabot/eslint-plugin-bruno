@@ -169,6 +169,34 @@ describe("Given a test-fixture-literal rule", () => {
         valid: [testCase],
       });
     });
+
+    it("Then it should pass for a undefined expression", () => {
+      // Arrange
+      const testCase = {
+        code: `export const myFixture = { key: undefined };`,
+        filename: "test.fixture.ts",
+      };
+
+      // Assert
+      ruleTester.run("test-fixture-literal", rule, {
+        invalid: [],
+        valid: [testCase],
+      });
+    });
+
+    it("Then it should pass for a null expression", () => {
+      // Arrange
+      const testCase = {
+        code: `export const myFixture = { key: null };`,
+        filename: "test.fixture.ts",
+      };
+
+      // Assert
+      ruleTester.run("test-fixture-literal", rule, {
+        invalid: [],
+        valid: [testCase],
+      });
+    });
   });
 
   describe("When the file is a fixture and the content is invalid", () => {
