@@ -5,7 +5,7 @@ export default {
   create(context) {
     return {
       Program(programNode) {
-        const filename = context.getFilename();
+        const filename = context.filename;
         const appDirIdentifier = `${path.sep}app${path.sep}`;
 
         if (

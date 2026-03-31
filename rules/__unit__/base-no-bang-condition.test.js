@@ -4,7 +4,7 @@ import { describe, it } from "vitest";
 import rule from "../base-no-bang-condition.js";
 
 const ruleTester = new RuleTester({
-  parserOptions: { ecmaVersion: 2020, sourceType: "module" },
+  languageOptions: { ecmaVersion: 2022, sourceType: "module" },
 });
 
 describe("Given the base-no-bang-condition rule", () => {

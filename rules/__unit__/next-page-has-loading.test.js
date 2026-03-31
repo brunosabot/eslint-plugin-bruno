@@ -5,10 +5,7 @@ import { afterEach, describe, it, vi } from "vitest";
 import rule from "../next-page-has-loading.js";
 
 const ruleTester = new RuleTester({
-  parserOptions: {
-    ecmaVersion: 2021,
-    sourceType: "module",
-  },
+  languageOptions: { ecmaVersion: 2022, sourceType: "module" },
 });
 
 describe("Given a next-page-has-loading rule", () => {

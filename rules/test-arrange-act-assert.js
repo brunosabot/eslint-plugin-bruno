@@ -7,7 +7,7 @@ export default {
           return;
         }
 
-        const sourceCode = context.getSourceCode();
+        const sourceCode = context.sourceCode;
         const comments = sourceCode.getCommentsInside(node);
 
         const arrangeComment = comments.find(

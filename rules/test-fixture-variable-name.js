@@ -6,7 +6,7 @@ function toCamelCase(str) {
 
 export default {
   create(context) {
-    const filename = context.getFilename();
+    const filename = context.filename;
     if (filename.endsWith(".fixture.ts") === false) {
       return {};
     }

@@ -4,10 +4,7 @@ import { describe, it } from "vitest";
 import rule from "../test-fixture-literal.js";
 
 const ruleTester = new RuleTester({
-  parserOptions: {
-    ecmaVersion: 2021,
-    sourceType: "module",
-  },
+  languageOptions: { ecmaVersion: 2022, sourceType: "module" },
 });
 
 describe("Given a test-fixture-literal rule", () => {

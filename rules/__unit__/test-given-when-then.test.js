@@ -4,7 +4,7 @@ import { describe, it } from "vitest";
 import rule from "../test-given-when-then.js";
 
 const ruleTester = new RuleTester({
-  parserOptions: { ecmaVersion: 2020, sourceType: "module" },
+  languageOptions: { ecmaVersion: 2022, sourceType: "module" },
 });
 
 describe("Given the test-given-when-then rule", () => {

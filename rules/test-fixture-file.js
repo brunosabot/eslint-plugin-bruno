@@ -2,7 +2,7 @@ import path from "path";
 
 export default {
   create: function (context) {
-    const filename = context.getFilename();
+    const filename = context.filename;
     const pathParts = filename.split(path.sep);
 
     const isInFixturesDir = pathParts.includes("__fixtures__");
